@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-
+import timeit
 """
 Advent of Code 2021 - Day 2
 Addison Freeman
@@ -23,7 +23,13 @@ def move(tup):
             pos[2] -= amt
         elif(cmd == "down"):
             pos[2] += amt
+    res = pos[0] * pos[1]
+    print(res)
     return pos[0] * pos[1]
 
-res = move(tup)
-print(res)
+print("Time spent(sec):", timeit.timeit(
+    lambda: move([ [''.join([j for j in arr[i] if not j.isdigit()]).strip(), int(''.join(filter(str.isdigit, arr[i])))]  for i,x in enumerate(arr) ]) , number=1
+))
+
+# res = move(tup)
+# print(res)
